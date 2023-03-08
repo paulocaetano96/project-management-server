@@ -18,6 +18,11 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
+    //role of user, should be: admin, staff, player
+    role: {
+      type: String,
+      required: [true, "Role is required: Player, Staff or Admin"],
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

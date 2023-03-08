@@ -1,0 +1,45 @@
+const router = require('express').Router();
+const mongoose = require('mongoose');
+
+const Event = require('../models/Event.model');
+const Notifications = require('../models/Notifications.model');
+
+
+// create an event
+router.post('/events', async (req, res, next) => {
+
+    try {
+        //getting the information from the model
+        const { title, description, startTime, endTime} = req.body;
+        //waiting until we have the information so that we can create the event
+        const event = await Event.create( req.body );
+        //sending the created event to the client
+        res.json( event );
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+//Reading all events
+router.get('/events', async (req, res, next) => {
+    try {
+        //we create a variable that stores all the Id's of all the events and we're populating it also with the notifications associated with the day
+        const events = await Event.find().populate('notifications');
+        //sending the events to the client
+        res.json(events);
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+
+
+
+module.exports = router;
+
+
+
+
+
+
+
