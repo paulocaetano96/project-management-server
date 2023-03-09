@@ -21,11 +21,11 @@ const userSchema = new Schema(
     //role of user, should be: admin, staff, player
     role: {
       type: String,
-      required: [true, "Role is required: Player, Staff or Admin"],
+      required: [true, "Role is required: Staff or Player"],
     },
     club: {
-        type: String,
-        required: true,
+      type: Schema.Types.ObjectId,
+      ref: 'Club'
     }
   },
   {
