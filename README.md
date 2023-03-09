@@ -388,6 +388,16 @@ mobiscroll || @mui/material || toastify || Axios
 
 mongoose; Ironlauncher; multer; cloudinary; multer-storage-cloudinary; react-router-dom;
 
+ironlauncher
+axios
+bcryptjs
+express-session
+connect-mongo
+toastify
+cloudinary
+multer
+multer-storage-cloudinary
+
 <br>
 
 ## Links
