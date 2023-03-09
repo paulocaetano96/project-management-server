@@ -1,7 +1,6 @@
 const {Schema, model} = require ('mongoose')
 
 const messageSchema = new Schema ({
-
     title: {
         type: String,
         required: true
@@ -15,7 +14,23 @@ const messageSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'Event'
         }
-    ]
+    ],
+    expiration: {
+        type: Date,
+        /* !??!!??!?!?!?!?!?!??!?!?!?!?!??!?!?!?!?!?!?!?!?!? */
+    },
+    sentTo: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+        }
+    ],
+    readBy: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+        }
+    ],
 }, {
     timestamps: true,
 })
