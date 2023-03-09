@@ -9,15 +9,20 @@ const messageSchema = new Schema ({
         type: String,
         trim: true,
     },
-    event: [
-        {
+    important: {
+        type: Boolean,
+        default: false,
+    },
+    event:{
         type: Schema.Types.ObjectId,
         ref: 'Event'
-        }
-    ],
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
     expiration: {
         type: Date,
-        /* !??!!??!?!?!?!?!?!??!?!?!?!?!??!?!?!?!?!?!?!?!?!? */
     },
     sentTo: [
         {
