@@ -28,4 +28,28 @@ router.post("/photos", async (req, res, next) => {
     }
   });
 
+  //to delete a specific photo
+router.delete('/photos/:id', async (req, res, next) => {
+
+    const {id} = req.params;  //->id of the photo to be deleted
+  
+    //checking if the ID is valid or not. If not we:
+    if(!mongoose.Types.ObjectId.isValid(id)){
+      //send an error message to the client
+      res.json('The provided id is not valid')
+    }
+  
+    try {
+      //so, we delete the photo from the database if we have a valid ID
+      await Photo.findByIdAndRemove(id)
+      //success message saying that the photo with the given ID has been deleted
+      res.json({message: `Event with the ${id} id successfully deleted`}) 
+  
+    } catch (error) {
+      console.log(error);
+      res.json(error); 
+    }
+  
+  });
+
 module.exports = router;
