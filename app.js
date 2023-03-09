@@ -30,6 +30,18 @@ app.use("/auth", authRoutes);
     const messagesRoutes = require("./routes/messages.routes");
     app.use("/api", messagesRoutes);
 
+    // documents routes
+    const documentsRoutes = require("./routes/document.routes");
+    app.use("/api", documentsRoutes);
+
+    // documents routes
+    const clubDetailsRoutes = require("./routes/clubDetails.routes");
+    app.use("/api", clubDetailsRoutes);
+
+// photos routes
+const photosRoutes = require("./routes/photos.routes");
+app.use("/api", photosRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
