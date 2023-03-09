@@ -10,15 +10,20 @@ const eventSchema = new Schema ({
         type: String,
         trim: true,
     },
-    startTime: {
-        type: String,
+    start: {
+        type: Date,
         trim: true,
     },  
-    endTime: {
-        type: String,
+    end: {
+        type: Date,
         trim: true,
     },
-    notifications: [
+    allDay: {
+        type: Boolean,
+    },
+
+
+    message: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Notifications'

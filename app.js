@@ -27,8 +27,8 @@ app.use("/auth", authRoutes);
     app.use("/api", eventRoutes);
 
     // notifications routes
-    const notificationsRoutes = require("./routes/notifications.routes");
-    app.use("/api", notificationsRoutes);
+    const messagesRoutes = require("./routes/messages.routes");
+    app.use("/api", messagesRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
