@@ -15,6 +15,10 @@ const photoSchema = new Schema(
             type: String,
             trim: true,
         },
+        gallery: {
+            type: String,
+            required: true,
+        }
     }, {
         timestamps: true,
     }

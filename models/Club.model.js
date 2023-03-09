@@ -26,6 +26,12 @@ const clubSchema = new Schema(
             trim: true,
         }
         ],
+        members: [
+            {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+            }
+        ],
     }, {
         timestamps: true,
     }

@@ -15,6 +15,10 @@ const documentSchema = new Schema(
             type: String,
             trim: true,
         },
+        collection: {
+            type: String,
+            required: true,
+        }
     }, {
         timestamps: true,
     }
