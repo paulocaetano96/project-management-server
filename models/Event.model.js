@@ -21,14 +21,13 @@ const eventSchema = new Schema ({
     allDay: {
         type: Boolean,
     },
-
-
-    message: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Notifications'
-        }
-    ]
+    eventType: {
+        type: String,
+    },
+    color: {
+        type: String,
+        default: "#2596be"
+    },
 }, {
     timestamps: true,
 })

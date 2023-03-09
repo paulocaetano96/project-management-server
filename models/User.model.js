@@ -22,6 +22,10 @@ const userSchema = new Schema(
     role: {
       type: String,
       required: [true, "Role is required: Player, Staff or Admin"],
+    },
+    club: {
+        type: String,
+        required: true,
     }
   },
   {

@@ -7,12 +7,12 @@ const Notifications = require("../models/Message.model");
 const Event = require("../models/Event.model");
 
 //creating it, async because we want to trigger it after we recieve the information needed to create it.
-router.post("/notifications", async (req, res, next) => {
+router.post("/messages", async (req, res, next) => {
   try {
     //getting the information from the model
     const { title, description, startTime, endTime, event } = req.body;
     //wait until we have the information, then we create it
-    const notifications = await Notifications.create({
+    const messages = await Notifications.create({
       title,
       description,
       startTime,
@@ -21,10 +21,10 @@ router.post("/notifications", async (req, res, next) => {
     });
     //find by id and push the information into the database
     await Event.findByIdAndUpdate(event, {
-      $push: { notifications: notifications._id },
+      $push: { messages: messages._id },
     });
     //send the information to the client
-    res.json(notifications);
+    res.json(messages);
   } catch (error) {
     console.log(error);
   }
