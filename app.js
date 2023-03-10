@@ -34,13 +34,13 @@ app.use("/auth", authRoutes);
     const documentsRoutes = require("./routes/document.routes");
     app.use("/api", documentsRoutes);
 
-    // documents routes
+    // club routes
     const clubRoutes = require("./routes/club.routes");
     app.use("/api", clubRoutes);
 
-// photos routes
-const photosRoutes = require("./routes/photos.routes");
-app.use("/api", photosRoutes);
+    // photos routes
+    const photosRoutes = require("./routes/photos.routes");
+    app.use("/api", photosRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

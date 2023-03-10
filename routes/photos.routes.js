@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const mongoose = require("mongoose");
 
 const Photo = require("../models/Photo.model");
 
