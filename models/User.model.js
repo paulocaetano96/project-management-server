@@ -22,6 +22,7 @@ const userSchema = new Schema(
     role: {
       type: String,
       required: [true, "Role is required: Staff or Player"],
+      enum: ['staff', 'player']
     },
     club: {
       type: Schema.Types.ObjectId,
