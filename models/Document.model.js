@@ -14,7 +14,7 @@ const documentSchema = new Schema(
             type: String,
             trim: true,
         },
-        collection: {
+        group: {
             type: String,
             required: true,
         }

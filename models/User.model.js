@@ -25,7 +25,8 @@ const userSchema = new Schema(
     },
     club: {
       type: Schema.Types.ObjectId,
-      ref: 'Club'
+      ref: 'Club',
+      required: [true, "A valid club key is required"]
     }
   },
   {

@@ -35,8 +35,8 @@ app.use("/auth", authRoutes);
     app.use("/api", documentsRoutes);
 
     // documents routes
-    const clubDetailsRoutes = require("./routes/clubDetails.routes");
-    app.use("/api", clubDetailsRoutes);
+    const clubRoutes = require("./routes/club.routes");
+    app.use("/api", clubRoutes);
 
 // photos routes
 const photosRoutes = require("./routes/photos.routes");
