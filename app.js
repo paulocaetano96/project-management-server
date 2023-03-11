@@ -40,6 +40,7 @@ app.use("/auth", authRoutes);
 
     // photos routes
     const photosRoutes = require("./routes/photos.routes");
+const bodyParser = require('body-parser');
     app.use("/api", photosRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
