@@ -60,9 +60,15 @@ router.put('/messages/:id', async (req, res, next) => {
   }
   try {
       const updatedMessage = await Message.findByIdAndUpdate(id, {title, description, important, event, expiration, sentTo}, {new: true});
+
+      if(!updatedMessage) {
+        //if nothing is returned, send an error response
+        return res.status(404).json({ message: 'Message not found' })
+      }
+
       res.json(updatedMessage);
   } catch (error) {
-      res.json(error);
+      res.status(500).json({ message: 'Internal server error'});
   }
 })
 
