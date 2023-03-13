@@ -61,11 +61,10 @@ router.get('/events/:id', async (req, res, next) => {
 });
 
 //to edit a specific event
-router.put('/events/:id', async (req, res, next) => {
-	//get the id of the event to be edited
-	const { id } = req.params; //->id of the event to be edited
-	const { title, description, start, end, allDay, eventType, color } =
-		req.body; //->information from the model
+router.put('/events', async (req, res, next) => {
+	//in this case, the id will come from the body too
+	const { id, title, description, start, end, allDay, eventType, color } =
+		req.body;
 
 	if (!mongoose.Types.ObjectId.isValid(id)) {
 		res.json('The provided Id is not valid');
