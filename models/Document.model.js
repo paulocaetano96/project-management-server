@@ -12,7 +12,6 @@ const documentSchema = new Schema(
         },
         url: {
             type: String,
-            trim: true,
         },
         group: {
             type: String,
