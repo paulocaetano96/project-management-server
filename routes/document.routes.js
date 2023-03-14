@@ -9,9 +9,9 @@ const fileUploader = require("../config/cloudinary.config");
 router.post("/documents", async (req, res, next) => {
   try {
     //getting the information from the model
-    const { title, description, url, group } = req.body;
+    const { title, description, fileUrl, group } = req.body;
     //waiting until we have the information so that we can create the document
-    const document = await Document.create({ title, description, url, group });
+    const document = await Document.create({ title, description, fileUrl, group });
     //sending the created document to the client
     res.json(document);
   } catch (error) {
@@ -50,7 +50,7 @@ router.get("/documents/:id", async (req, res, next) => {
 router.put("/documents/:id", async (req, res, next) => {
   //get the id of the document to be edited
   const { id } = req.params; //->id of the document to be edited
-  const { title, description, url } = req.body; //->information from the model
+  const { title, description, fileUrl } = req.body; //->information from the model
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.json("The provided Id is not valid");
@@ -60,7 +60,7 @@ router.put("/documents/:id", async (req, res, next) => {
     //we create a variable that stores the id of the document to be edited
     const updatedDocuments = await Document.findByIdAndUpdate(
       id,
-      { title, description, url },
+      { title, description, fileUrl },
       { new: true }
     );
     //sending the updated document to the client
@@ -94,8 +94,8 @@ router.delete("/documents/:id", async (req, res, next) => {
 //---------------- UPLOAD DOCUMENTS ----------------------
 
 
-// POST "/api/upload" => Route that receives the image, sends it to Cloudinary via the fileUploader and returns the image URL
-router.post("/upload", fileUploader.single("url"), (req, res, next) => {
+// POST "/api/upload" => Route that receives the image, sends it to Cloudinary via the fileUploader and returns the image fileUrl
+router.post("/upload", fileUploader.single("fileUrl"), (req, res, next) => {
    console.log("file is: ", req.file)
 
   if (!req.file) {
@@ -103,7 +103,7 @@ router.post("/upload", fileUploader.single("url"), (req, res, next) => {
     return;
   }
   
-  // Get the URL of the uploaded file and send it as a response.
+  // Get the fileUrl of the uploaded file and send it as a response.
   // 'fileUrl' can be any name, just make sure you remember to use the same when accessing it on the frontend
   
   res.json({ fileUrl: req.file.path });

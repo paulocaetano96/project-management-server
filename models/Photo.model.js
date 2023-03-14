@@ -14,7 +14,7 @@ const photoSchema = new Schema(
       type: String,
       trim: true,
     },
-    url: {
+    fileUrl: {
       type: String,
       trim: true,
     },
