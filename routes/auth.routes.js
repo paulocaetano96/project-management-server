@@ -137,6 +137,10 @@ router.get("/verify", isAuthenticated, (req, res, next) => {
 
 module.exports = router;
 
+//------------TRIAL AND ERROR UPLOAD-------------------------------------------UPLOAD ⤵
+/*   const index = require('./index.routes');
+  app.use('/', index); */
+
 
 /* 
 

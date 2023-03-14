@@ -16,7 +16,7 @@ const documentSchema = new Schema(
         },
         group: {
             type: String,
-            required: true,
+
         }
     }, {
         timestamps: true,
