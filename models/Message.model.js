@@ -39,7 +39,7 @@ const messageSchema = new Schema ({
     club: {
         type: Schema.Types.ObjectId,
         ref: 'Club',
-/*         required: [true, "You need to be a club member to create a message"] */
+        required: [true, "You need to be a club member to create a message"]
     }
 }, {
     timestamps: true,

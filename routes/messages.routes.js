@@ -10,7 +10,7 @@ const Event = require("../models/Event.model");
 //creating it, async because we want to trigger it after we recieve the information needed to create it.
 router.post("/messages", async (req, res, next) => {
   try {
-    //getting the information from the model
+    //getting the information from the form
     const { title, description, important, event, expirationDays, sentTo, club } =
       req.body;
     const created = new Date();
