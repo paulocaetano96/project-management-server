@@ -36,6 +36,11 @@ const messageSchema = new Schema ({
         ref: 'User'
         }
     ],
+    club: {
+        type: Schema.Types.ObjectId,
+        ref: 'Club',
+        required: [true, "You need to be a club member to create a message"]
+    }
 }, {
     timestamps: true,
 })
