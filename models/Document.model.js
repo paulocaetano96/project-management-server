@@ -12,11 +12,10 @@ const documentSchema = new Schema(
         },
         url: {
             type: String,
-            trim: true,
         },
         group: {
             type: String,
-            required: true,
+
         }
     }, {
         timestamps: true,
