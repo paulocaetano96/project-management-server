@@ -86,19 +86,17 @@ router.put('/events', async (req, res, next) => {
 
 //to delete a specific event
 router.delete('/events/:id', async (req, res, next) => {
-	const { id } = req.params; //->id of the event to be deleted
-
+	const { id } = req.params//->id of the event to be deleted
 	//checking if the ID is valid or not. If not we:
 	if (!mongoose.Types.ObjectId.isValid(id)) {
 		//send an error message to the client
 		res.json('The provided id is not valid');
 	}
-
 	try {
 		//so, we delete the event from the database if we have a valid ID
 		await Event.findByIdAndRemove(id);
 		//success message saying that the event with the given ID has been deleted
-		res.json({ message: `Event with the ${id} id successfully deleted` });
+		res.json({ message: `Event deleted` });
 	} catch (error) {
 		console.log(error);
 		res.json(error);
