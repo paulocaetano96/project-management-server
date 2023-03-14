@@ -28,6 +28,11 @@ const eventSchema = new Schema ({
         type: String,
         default: "#2596be"
     },
+    club: {
+        type: Schema.Types.ObjectId,
+        ref: 'Club',
+        required: [true, "You need to be a club member to create an event"]
+    }
 }, {
     timestamps: true,
 })

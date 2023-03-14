@@ -8,7 +8,7 @@ const Event = require('../models/Event.model');
 router.post('/events', async (req, res, next) => {
 	try {
 		//getting the information from the user inserted information
-		const { title, description, start, end, allDay, eventType, color } =
+		const { title, description, start, end, allDay, eventType, color, club } =
 			req.body;
 		//waiting until we have the information so that we can create the event
 		const event = await Event.create({
@@ -19,6 +19,7 @@ router.post('/events', async (req, res, next) => {
 			allDay,
 			eventType,
 			color,
+			club,
 		});
 		//sending the created event to the client
 		res.json(event);
@@ -63,7 +64,7 @@ router.get('/events/:id', async (req, res, next) => {
 //to edit a specific event
 router.put('/events', async (req, res, next) => {
 	//in this case, the id will come from the body too
-	const { id, title, description, start, end, allDay, eventType, color } =
+	const { id, title, description, start, end, allDay, eventType, color, club } =
 		req.body;
 
 	if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -74,7 +75,7 @@ router.put('/events', async (req, res, next) => {
 		//we create a variable that stores the id of the event to be edited
 		const updatedEvent = await Event.findByIdAndUpdate(
 			id,
-			{ title, description, start, end, allDay, eventType, color },
+			{ title, description, start, end, allDay, eventType, color, club },
 			{ new: true },
 		);
 		//sending the updated event to the client
