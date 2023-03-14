@@ -19,9 +19,9 @@ router.get("/photos", async (req, res, next) => {
 router.post("/photos", async (req, res, next) => {
     try {
       //getting the information from the model
-      const { title, description, url, gallery } = req.body;
+      const { title, description, fileUrl, gallery } = req.body;
       //waiting until we have the information so that we can create the document
-      const photos = await Photo.create({ title, description, url, gallery });
+      const photos = await Photo.create({ title, description, fileUrl, gallery });
       //sending the created document to the client
       res.json(photos);
     } catch (error) {
@@ -57,7 +57,7 @@ router.delete('/photos/:id', async (req, res, next) => {
 router.put("/photos/:id", async (req, res, next) => {
   //get the id of the document to be edited
   const { id } = req.params; //->id of the document to be edited
-  const { title, description, url, gallery } = req.body; //->information from the model
+  const { title, description, fileUrl, gallery } = req.body; //->information from the model
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.json("The provided Id is not valid");
@@ -67,7 +67,7 @@ router.put("/photos/:id", async (req, res, next) => {
     //we create a variable that stores the id of the document to be edited
     const updatedPhotos = await Photo.findByIdAndUpdate(
       id,
-      { title, description, url, gallery },
+      { title, description, fileUrl, gallery },
       { new: true }
     );
     //sending the updated photo to the client

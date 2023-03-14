@@ -10,7 +10,7 @@ const documentSchema = new Schema(
             type: String,
             trim: true,
         },
-        url: {
+        fileUrl: {
             type: String,
         },
         group: {
