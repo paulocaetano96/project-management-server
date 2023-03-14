@@ -31,7 +31,7 @@ const eventSchema = new Schema ({
     club: {
         type: Schema.Types.ObjectId,
         ref: 'Club',
-/*         required: [true, "You need to be a club member to create an event"] */
+        required: [true, "You need to be a club member to create an event"]
     }
 }, {
     timestamps: true,

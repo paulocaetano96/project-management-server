@@ -11,7 +11,7 @@ const Event = require("../models/Event.model");
 router.post("/messages", async (req, res, next) => {
   try {
     //getting the information from the model
-    const { title, description, important, event, expirationDays, sentTo } =
+    const { title, description, important, event, expirationDays, sentTo, club } =
       req.body;
     const created = new Date();
     let expiration;
@@ -28,6 +28,7 @@ router.post("/messages", async (req, res, next) => {
       created,
       expiration,
       sentTo,
+      club,
     });
     //send the information to the client
     res.json(newMessage);
