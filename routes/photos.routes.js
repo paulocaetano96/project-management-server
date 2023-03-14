@@ -50,7 +50,33 @@ router.delete('/photos/:id', async (req, res, next) => {
       console.log(error);
       res.json(error); 
     }
-  
+
   });
+
+//to edit a specific photo
+router.put("/photos/:id", async (req, res, next) => {
+  //get the id of the document to be edited
+  const { id } = req.params; //->id of the document to be edited
+  const { title, description, url, gallery } = req.body; //->information from the model
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res.json("The provided Id is not valid");
+  }
+
+  try {
+    //we create a variable that stores the id of the document to be edited
+    const updatedPhotos = await Photo.findByIdAndUpdate(
+      id,
+      { title, description, url, gallery },
+      { new: true }
+    );
+    //sending the updated photo to the client
+    res.json(updatedPhotos);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
 
 module.exports = router;
