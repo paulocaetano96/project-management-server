@@ -7,18 +7,27 @@ const Message = require("../models/Message.model");
 //import the events model
 const Event = require("../models/Event.model");
 
+function addDays(date, days) {
+  let result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
 //creating it, async because we want to trigger it after we recieve the information needed to create it.
 router.post("/messages", async (req, res, next) => {
   try {
-    //getting the information from the model
+    //getting the information from the form
     const { title, description, important, event, expirationDays, sentTo, club } =
       req.body;
     const created = new Date();
-    let expiration;
+    const expirationNumber = Number(expirationDays)
+    const expiration = addDays(created, expirationNumber)
+/*     let expiration;
     if (expirationDays) {
       expiration = new Date();
+      console.log(expiration);
       expiration.setDate(expiration.getDate() + expirationDays);
-    }
+    } */
     //wait until we have the information, then we create it
     const newMessage = await Message.create({
       title,
