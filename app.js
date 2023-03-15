@@ -42,9 +42,15 @@ app.use("/auth", authRoutes);
     const clubRoutes = require("./routes/club.routes");
     app.use("/api", clubRoutes);
 
+    //profile routes -> user-card
+    const profileRoutes = require("./routes/profile.routes");
+    app.use("/api", profileRoutes);
+
+
+
+
     // photos routes
     const photosRoutes = require("./routes/photos.routes");
-    const bodyParser = require('body-parser');
     app.use("/api", photosRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
