@@ -18,6 +18,11 @@ const photoSchema = new Schema(
       type: String,
       trim: true,
     },
+    club: {
+      type: Schema.Types.ObjectId,
+      ref: 'Club',
+/*       required: [true, "You have to be a club member to upload a photo"] */
+  }
   },
   {
     timestamps: true,

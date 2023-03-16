@@ -9,9 +9,9 @@ const fileUploader = require("../config/cloudinary.config");
 router.post("/documents", async (req, res, next) => {
   try {
     //getting the information from the model
-    const { title, description, fileUrl, group } = req.body;
+    const { title, description, fileUrl, group, club } = req.body;
     //waiting until we have the information so that we can create the document
-    const document = await Document.create({ title, description, fileUrl, group });
+    const document = await Document.create({ title, description, fileUrl, group, club });
     //sending the created document to the client
     res.json(document);
   } catch (error) {

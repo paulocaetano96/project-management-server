@@ -15,7 +15,11 @@ const documentSchema = new Schema(
         },
         group: {
             type: String,
-
+        },
+        club: {
+            type: Schema.Types.ObjectId,
+            ref: 'Club',
+            required: [true, "You have to be a club member to upload a document"]
         }
     }, {
         timestamps: true,
