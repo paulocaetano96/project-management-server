@@ -56,8 +56,7 @@ router.post('/messages', async (req, res, next) => {
 //getting all the messages, populating sentTo and readBy to show that information to Staff
 router.get('/messages', async (req, res, next) => {
 	try {
-		const messages = await Message.find()
-    /* .populate('sentTo readBy') */
+		const messages = await Message.find()/* .populate('sentTo readBy') */
 /* 		messages.forEach((message) => {
 			console.log('read by', message.readBy[0].name);
 		}); */
@@ -71,9 +70,10 @@ router.get('/messages', async (req, res, next) => {
 //editing one message
 router.put('/messages/:id', async (req, res, next) => {
 	const { id } = req.params;
-	const { title, description, important, event, expirationDays, sentTo } =
+	const { title, description, important, event, expirationDays, sentTo, readBy } =
 		req.body;
 	let expiration;
+  console.log("triggered on the backend")
 	if (expirationDays) {
 		expiration = new Date();
 		expiration.setDate(expiration.getDate() + expirationDays);
@@ -84,7 +84,7 @@ router.put('/messages/:id', async (req, res, next) => {
 	try {
 		const updatedMessage = await Message.findByIdAndUpdate(
 			id,
-			{ title, description, important, event, expiration, sentTo },
+			{ title, description, important, event, expiration, sentTo, readBy },
 			{ new: true },
 		);
 		res.json(updatedMessage);
