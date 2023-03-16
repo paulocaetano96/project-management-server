@@ -19,9 +19,9 @@ router.get("/photos", async (req, res, next) => {
 router.post("/photos", async (req, res, next) => {
     try {
       //getting the information from the model
-      const { title, description, fileUrl, gallery } = req.body;
+      const { title, description, fileUrl, gallery, club } = req.body;
       //waiting until we have the information so that we can create the document
-      const photos = await Photo.create({ title, description, fileUrl, gallery });
+      const photos = await Photo.create({ title, description, fileUrl, gallery, club });
       //sending the created document to the client
       res.json(photos);
     } catch (error) {
